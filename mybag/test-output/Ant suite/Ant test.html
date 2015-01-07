@@ -1,0 +1,778 @@
+<html>
+<head>
+<title>TestNG:  Ant test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Ant test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>84/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Mon Nov 16 22:35:01 GMT 2009</td>
+</tr>
+<tr><td>Total time:</td><td>0 seconds (33 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Instance</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td width="30%"><b>Exception</b></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testAddAll()'><b>testAddAll</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testAddAll()'><b>testAddAll</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testAddAll()'><b>testAddAll</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testAddAll2()'><b>testAddAll2</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testAddAll2()'><b>testAddAll2</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testAddAll2()'><b>testAddAll2</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testContains()'><b>testContains</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testContains()'><b>testContains</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testContains()'><b>testContains</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testEmptyIterator()'><b>testEmptyIterator</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testEmptyIterator()'><b>testEmptyIterator</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testEmptyIterator()'><b>testEmptyIterator</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testEmptySize()'><b>testEmptySize</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testEmptySize()'><b>testEmptySize</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testEmptySize()'><b>testEmptySize</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.ExceptionThrowingTest.testNegativeSize()'><b>testNegativeSize</b><br>Test class:Ant test</td>
+<td>mybag.ExceptionThrowingTest@12b6651</td><td>0</td>
+<td><div><pre>mybag.BagException: Attempting to create a Bag with size less than 1
+	at mybag.ArrayBag.&lt;init&gt;(ArrayBag.java:31)
+	at mybag.BagTestFactory$1.getInstance(BagTestFactory.java:40)
+	at mybag.ExceptionThrowingTest.testNegativeSize(ExceptionThrowingTest.java:44)
+... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace12960684", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace12960684'><pre>mybag.BagException: Attempting to create a Bag with size less than 1
+	at mybag.ArrayBag.&lt;init&gt;(ArrayBag.java:31)
+	at mybag.BagTestFactory$1.getInstance(BagTestFactory.java:40)
+	at mybag.ExceptionThrowingTest.testNegativeSize(ExceptionThrowingTest.java:44)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.testng.internal.MethodHelper.invokeMethod(MethodHelper.java:609)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:532)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:686)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1018)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:128)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.runWorkers(TestRunner.java:759)
+	at org.testng.TestRunner.privateRun(TestRunner.java:592)
+	at org.testng.TestRunner.run(TestRunner.java:486)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:327)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:299)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:204)
+	at org.testng.TestNG.createAndRunSuiteRunners(TestNG.java:912)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:876)
+	at org.testng.TestNG.run(TestNG.java:784)
+	at org.testng.TestNG.privateMain(TestNG.java:949)
+	at org.testng.TestNG.main(TestNG.java:922)
+</pre></div></td>
+</tr>
+<tr>
+<td title='mybag.ExceptionThrowingTest.testNegativeSize()'><b>testNegativeSize</b><br>Test class:Ant test</td>
+<td>mybag.ExceptionThrowingTest@4a5ab2</td><td>0</td>
+<td><div><pre>mybag.BagException: Attempting to create a Bag with size less than 1
+	at mybag.MapBag.&lt;init&gt;(MapBag.java:29)
+	at mybag.BagTestFactory$2.getInstance(BagTestFactory.java:53)
+	at mybag.ExceptionThrowingTest.testNegativeSize(ExceptionThrowingTest.java:44)
+... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace29485609", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace29485609'><pre>mybag.BagException: Attempting to create a Bag with size less than 1
+	at mybag.MapBag.&lt;init&gt;(MapBag.java:29)
+	at mybag.BagTestFactory$2.getInstance(BagTestFactory.java:53)
+	at mybag.ExceptionThrowingTest.testNegativeSize(ExceptionThrowingTest.java:44)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.testng.internal.MethodHelper.invokeMethod(MethodHelper.java:609)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:532)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:686)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1018)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:128)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.runWorkers(TestRunner.java:759)
+	at org.testng.TestRunner.privateRun(TestRunner.java:592)
+	at org.testng.TestRunner.run(TestRunner.java:486)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:327)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:299)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:204)
+	at org.testng.TestNG.createAndRunSuiteRunners(TestNG.java:912)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:876)
+	at org.testng.TestNG.run(TestNG.java:784)
+	at org.testng.TestNG.privateMain(TestNG.java:949)
+	at org.testng.TestNG.main(TestNG.java:922)
+</pre></div></td>
+</tr>
+<tr>
+<td title='mybag.ExceptionThrowingTest.testNegativeSize()'><b>testNegativeSize</b><br>Test class:Ant test</td>
+<td>mybag.ExceptionThrowingTest@1888759</td><td>0</td>
+<td><div><pre>mybag.BagException: Attempting to create a Bag with size less than 1
+	at mybag.LinkedListBag.&lt;init&gt;(LinkedListBag.java:40)
+	at mybag.BagTestFactory$3.getInstance(BagTestFactory.java:64)
+	at mybag.ExceptionThrowingTest.testNegativeSize(ExceptionThrowingTest.java:44)
+... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace4461550", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace4461550'><pre>mybag.BagException: Attempting to create a Bag with size less than 1
+	at mybag.LinkedListBag.&lt;init&gt;(LinkedListBag.java:40)
+	at mybag.BagTestFactory$3.getInstance(BagTestFactory.java:64)
+	at mybag.ExceptionThrowingTest.testNegativeSize(ExceptionThrowingTest.java:44)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.testng.internal.MethodHelper.invokeMethod(MethodHelper.java:609)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:532)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:686)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1018)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:128)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.runWorkers(TestRunner.java:759)
+	at org.testng.TestRunner.privateRun(TestRunner.java:592)
+	at org.testng.TestRunner.run(TestRunner.java:486)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:327)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:299)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:204)
+	at org.testng.TestNG.createAndRunSuiteRunners(TestNG.java:912)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:876)
+	at org.testng.TestNG.run(TestNG.java:784)
+	at org.testng.TestNG.privateMain(TestNG.java:949)
+	at org.testng.TestNG.main(TestNG.java:922)
+</pre></div></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOneCountOf()'><b>testOneCountOf</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOneCountOf()'><b>testOneCountOf</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOneCountOf()'><b>testOneCountOf</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOneEmptyCountOf()'><b>testOneEmptyCountOf</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOneEmptyCountOf()'><b>testOneEmptyCountOf</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOneEmptyCountOf()'><b>testOneEmptyCountOf</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOneOccurencesCountOf()'><b>testOneOccurencesCountOf</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOneOccurencesCountOf()'><b>testOneOccurencesCountOf</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOneOccurencesCountOf()'><b>testOneOccurencesCountOf</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOneRemoveOccurences()'><b>testOneRemoveOccurences</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOneRemoveOccurences()'><b>testOneRemoveOccurences</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOneRemoveOccurences()'><b>testOneRemoveOccurences</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOneSize()'><b>testOneSize</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOneSize()'><b>testOneSize</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOneSize()'><b>testOneSize</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOneSizeAddDuplicate()'><b>testOneSizeAddDuplicate</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOneSizeAddDuplicate()'><b>testOneSizeAddDuplicate</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOneSizeAddDuplicate()'><b>testOneSizeAddDuplicate</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherCountOf()'><b>testOtherCountOf</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherCountOf()'><b>testOtherCountOf</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherCountOf()'><b>testOtherCountOf</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherEmptyCountOf()'><b>testOtherEmptyCountOf</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherEmptyCountOf()'><b>testOtherEmptyCountOf</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherEmptyCountOf()'><b>testOtherEmptyCountOf</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherIteratorThreeNoDuplicates()'><b>testOtherIteratorThreeNoDuplicates</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherIteratorThreeNoDuplicates()'><b>testOtherIteratorThreeNoDuplicates</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherIteratorThreeNoDuplicates()'><b>testOtherIteratorThreeNoDuplicates</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherIteratorThreeWithDuplicates()'><b>testOtherIteratorThreeWithDuplicates</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherIteratorThreeWithDuplicates()'><b>testOtherIteratorThreeWithDuplicates</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherIteratorThreeWithDuplicates()'><b>testOtherIteratorThreeWithDuplicates</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherIteratorTwoNoDuplicates()'><b>testOtherIteratorTwoNoDuplicates</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherIteratorTwoNoDuplicates()'><b>testOtherIteratorTwoNoDuplicates</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherIteratorTwoNoDuplicates()'><b>testOtherIteratorTwoNoDuplicates</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherIteratorTwoWithDuplicates()'><b>testOtherIteratorTwoWithDuplicates</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherIteratorTwoWithDuplicates()'><b>testOtherIteratorTwoWithDuplicates</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherIteratorTwoWithDuplicates()'><b>testOtherIteratorTwoWithDuplicates</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherOccurencesCountOf()'><b>testOtherOccurencesCountOf</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherOccurencesCountOf()'><b>testOtherOccurencesCountOf</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherOccurencesCountOf()'><b>testOtherOccurencesCountOf</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherRemoveOccurences()'><b>testOtherRemoveOccurences</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherRemoveOccurences()'><b>testOtherRemoveOccurences</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherRemoveOccurences()'><b>testOtherRemoveOccurences</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherSize()'><b>testOtherSize</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherSize()'><b>testOtherSize</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherSize()'><b>testOtherSize</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherSizeAddDuplicate()'><b>testOtherSizeAddDuplicate</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherSizeAddDuplicate()'><b>testOtherSizeAddDuplicate</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherSizeAddDuplicate()'><b>testOtherSizeAddDuplicate</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherSizeDecrease()'><b>testOtherSizeDecrease</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherSizeDecrease()'><b>testOtherSizeDecrease</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherSizeDecrease()'><b>testOtherSizeDecrease</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherToString()'><b>testOtherToString</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherToString()'><b>testOtherToString</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testOtherToString()'><b>testOtherToString</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testSizeDecrease()'><b>testSizeDecrease</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testSizeDecrease()'><b>testSizeDecrease</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testSizeDecrease()'><b>testSizeDecrease</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.ExceptionThrowingTest.testSizeTooLarge()'><b>testSizeTooLarge</b><br>Test class:Ant test</td>
+<td>mybag.ExceptionThrowingTest@12b6651</td><td>0</td>
+<td><div><pre>mybag.BagException: Attempting to create a Bag with size greater than maximum
+	at mybag.ArrayBag.&lt;init&gt;(ArrayBag.java:27)
+	at mybag.BagTestFactory$1.getInstance(BagTestFactory.java:40)
+	at mybag.ExceptionThrowingTest.testSizeTooLarge(ExceptionThrowingTest.java:38)
+... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace26715004", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace26715004'><pre>mybag.BagException: Attempting to create a Bag with size greater than maximum
+	at mybag.ArrayBag.&lt;init&gt;(ArrayBag.java:27)
+	at mybag.BagTestFactory$1.getInstance(BagTestFactory.java:40)
+	at mybag.ExceptionThrowingTest.testSizeTooLarge(ExceptionThrowingTest.java:38)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.testng.internal.MethodHelper.invokeMethod(MethodHelper.java:609)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:532)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:686)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1018)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:128)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.runWorkers(TestRunner.java:759)
+	at org.testng.TestRunner.privateRun(TestRunner.java:592)
+	at org.testng.TestRunner.run(TestRunner.java:486)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:327)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:299)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:204)
+	at org.testng.TestNG.createAndRunSuiteRunners(TestNG.java:912)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:876)
+	at org.testng.TestNG.run(TestNG.java:784)
+	at org.testng.TestNG.privateMain(TestNG.java:949)
+	at org.testng.TestNG.main(TestNG.java:922)
+</pre></div></td>
+</tr>
+<tr>
+<td title='mybag.ExceptionThrowingTest.testSizeTooLarge()'><b>testSizeTooLarge</b><br>Test class:Ant test</td>
+<td>mybag.ExceptionThrowingTest@4a5ab2</td><td>0</td>
+<td><div><pre>mybag.BagException: Attempting to create a Bag with size greater than maximum
+	at mybag.MapBag.&lt;init&gt;(MapBag.java:25)
+	at mybag.BagTestFactory$2.getInstance(BagTestFactory.java:53)
+	at mybag.ExceptionThrowingTest.testSizeTooLarge(ExceptionThrowingTest.java:38)
+... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace25142878", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace25142878'><pre>mybag.BagException: Attempting to create a Bag with size greater than maximum
+	at mybag.MapBag.&lt;init&gt;(MapBag.java:25)
+	at mybag.BagTestFactory$2.getInstance(BagTestFactory.java:53)
+	at mybag.ExceptionThrowingTest.testSizeTooLarge(ExceptionThrowingTest.java:38)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.testng.internal.MethodHelper.invokeMethod(MethodHelper.java:609)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:532)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:686)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1018)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:128)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.runWorkers(TestRunner.java:759)
+	at org.testng.TestRunner.privateRun(TestRunner.java:592)
+	at org.testng.TestRunner.run(TestRunner.java:486)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:327)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:299)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:204)
+	at org.testng.TestNG.createAndRunSuiteRunners(TestNG.java:912)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:876)
+	at org.testng.TestNG.run(TestNG.java:784)
+	at org.testng.TestNG.privateMain(TestNG.java:949)
+	at org.testng.TestNG.main(TestNG.java:922)
+</pre></div></td>
+</tr>
+<tr>
+<td title='mybag.ExceptionThrowingTest.testSizeTooLarge()'><b>testSizeTooLarge</b><br>Test class:Ant test</td>
+<td>mybag.ExceptionThrowingTest@1888759</td><td>0</td>
+<td><div><pre>mybag.BagException: Attempting to create a Bag with size greater than maximum
+	at mybag.LinkedListBag.&lt;init&gt;(LinkedListBag.java:36)
+	at mybag.BagTestFactory$3.getInstance(BagTestFactory.java:64)
+	at mybag.ExceptionThrowingTest.testSizeTooLarge(ExceptionThrowingTest.java:38)
+... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace30090737", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace30090737'><pre>mybag.BagException: Attempting to create a Bag with size greater than maximum
+	at mybag.LinkedListBag.&lt;init&gt;(LinkedListBag.java:36)
+	at mybag.BagTestFactory$3.getInstance(BagTestFactory.java:64)
+	at mybag.ExceptionThrowingTest.testSizeTooLarge(ExceptionThrowingTest.java:38)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.testng.internal.MethodHelper.invokeMethod(MethodHelper.java:609)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:532)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:686)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1018)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:128)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.runWorkers(TestRunner.java:759)
+	at org.testng.TestRunner.privateRun(TestRunner.java:592)
+	at org.testng.TestRunner.run(TestRunner.java:486)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:327)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:299)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:204)
+	at org.testng.TestNG.createAndRunSuiteRunners(TestNG.java:912)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:876)
+	at org.testng.TestNG.run(TestNG.java:784)
+	at org.testng.TestNG.privateMain(TestNG.java:949)
+	at org.testng.TestNG.main(TestNG.java:922)
+</pre></div></td>
+</tr>
+<tr>
+<td title='mybag.ExceptionThrowingTest.testSizeTooSmall()'><b>testSizeTooSmall</b><br>Test class:Ant test</td>
+<td>mybag.ExceptionThrowingTest@12b6651</td><td>0</td>
+<td><div><pre>mybag.BagException: Attempting to create a Bag with size less than 1
+	at mybag.ArrayBag.&lt;init&gt;(ArrayBag.java:31)
+	at mybag.BagTestFactory$1.getInstance(BagTestFactory.java:40)
+	at mybag.ExceptionThrowingTest.testSizeTooSmall(ExceptionThrowingTest.java:50)
+... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace5462872", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace5462872'><pre>mybag.BagException: Attempting to create a Bag with size less than 1
+	at mybag.ArrayBag.&lt;init&gt;(ArrayBag.java:31)
+	at mybag.BagTestFactory$1.getInstance(BagTestFactory.java:40)
+	at mybag.ExceptionThrowingTest.testSizeTooSmall(ExceptionThrowingTest.java:50)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.testng.internal.MethodHelper.invokeMethod(MethodHelper.java:609)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:532)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:686)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1018)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:128)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.runWorkers(TestRunner.java:759)
+	at org.testng.TestRunner.privateRun(TestRunner.java:592)
+	at org.testng.TestRunner.run(TestRunner.java:486)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:327)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:299)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:204)
+	at org.testng.TestNG.createAndRunSuiteRunners(TestNG.java:912)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:876)
+	at org.testng.TestNG.run(TestNG.java:784)
+	at org.testng.TestNG.privateMain(TestNG.java:949)
+	at org.testng.TestNG.main(TestNG.java:922)
+</pre></div></td>
+</tr>
+<tr>
+<td title='mybag.ExceptionThrowingTest.testSizeTooSmall()'><b>testSizeTooSmall</b><br>Test class:Ant test</td>
+<td>mybag.ExceptionThrowingTest@4a5ab2</td><td>0</td>
+<td><div><pre>mybag.BagException: Attempting to create a Bag with size less than 1
+	at mybag.MapBag.&lt;init&gt;(MapBag.java:29)
+	at mybag.BagTestFactory$2.getInstance(BagTestFactory.java:53)
+	at mybag.ExceptionThrowingTest.testSizeTooSmall(ExceptionThrowingTest.java:50)
+... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace25253977", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace25253977'><pre>mybag.BagException: Attempting to create a Bag with size less than 1
+	at mybag.MapBag.&lt;init&gt;(MapBag.java:29)
+	at mybag.BagTestFactory$2.getInstance(BagTestFactory.java:53)
+	at mybag.ExceptionThrowingTest.testSizeTooSmall(ExceptionThrowingTest.java:50)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.testng.internal.MethodHelper.invokeMethod(MethodHelper.java:609)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:532)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:686)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1018)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:128)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.runWorkers(TestRunner.java:759)
+	at org.testng.TestRunner.privateRun(TestRunner.java:592)
+	at org.testng.TestRunner.run(TestRunner.java:486)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:327)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:299)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:204)
+	at org.testng.TestNG.createAndRunSuiteRunners(TestNG.java:912)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:876)
+	at org.testng.TestNG.run(TestNG.java:784)
+	at org.testng.TestNG.privateMain(TestNG.java:949)
+	at org.testng.TestNG.main(TestNG.java:922)
+</pre></div></td>
+</tr>
+<tr>
+<td title='mybag.ExceptionThrowingTest.testSizeTooSmall()'><b>testSizeTooSmall</b><br>Test class:Ant test</td>
+<td>mybag.ExceptionThrowingTest@1888759</td><td>0</td>
+<td><div><pre>mybag.BagException: Attempting to create a Bag with size less than 1
+	at mybag.LinkedListBag.&lt;init&gt;(LinkedListBag.java:40)
+	at mybag.BagTestFactory$3.getInstance(BagTestFactory.java:64)
+	at mybag.ExceptionThrowingTest.testSizeTooSmall(ExceptionThrowingTest.java:50)
+... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace11649632", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace11649632'><pre>mybag.BagException: Attempting to create a Bag with size less than 1
+	at mybag.LinkedListBag.&lt;init&gt;(LinkedListBag.java:40)
+	at mybag.BagTestFactory$3.getInstance(BagTestFactory.java:64)
+	at mybag.ExceptionThrowingTest.testSizeTooSmall(ExceptionThrowingTest.java:50)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.testng.internal.MethodHelper.invokeMethod(MethodHelper.java:609)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:532)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:686)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1018)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:128)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.runWorkers(TestRunner.java:759)
+	at org.testng.TestRunner.privateRun(TestRunner.java:592)
+	at org.testng.TestRunner.run(TestRunner.java:486)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:327)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:299)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:204)
+	at org.testng.TestNG.createAndRunSuiteRunners(TestNG.java:912)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:876)
+	at org.testng.TestNG.run(TestNG.java:784)
+	at org.testng.TestNG.privateMain(TestNG.java:949)
+	at org.testng.TestNG.main(TestNG.java:922)
+</pre></div></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testSubtract()'><b>testSubtract</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1befab0</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testSubtract()'><b>testSubtract</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@13c5982</td><td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='mybag.BagTest.testSubtract()'><b>testSubtract</b><br>Test class:Ant test</td>
+<td>mybag.BagTest@1186fab</td><td>0</td>
+<td></td>
+</tr>
+</table><p>
+</body>
+</html>
