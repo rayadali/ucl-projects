@@ -1,0 +1,67 @@
+1. Give the complete details of all customers living in Washington or Oregon
+
+SELECT 	*
+FROM 	customers
+WHERE 	state = 'Washington' or state = 'Oregon';
+
+2. How many customers live in each state of which we have a record?
+
+SELECT 	DISTINCT state, count(customerid) as count
+FROM 	customers
+GROUP 	BY state;
+
+3. What is the surname of the customer who ordered an S4?
+
+SELECT 	customerid, firstname, lastname
+FROM 	customers
+WHERE 	customerid =
+	(SELECT customerid
+	FROM orders
+	WHERE itemid = 'S4');
+	
+
+4. What are the surnames of customers who have ordered items costing more than $28?
+
+SELECT	lastname
+FROM	customers
+WHERE	customerid IN
+	(SELECT customerid
+	FROM orders
+	WHERE linecost > 28);
+
+5. Which items were ordered by each customer and what was the price of each item? List your answer in 
+descending order of customer last name. 
+
+SELECT	 firstname, lastname itemname, cost
+FROM	 customers c, orders o, items i
+WHERE	 c.customerid = o.customerid
+	 AND o.itemid = i.itemid
+ORDER BY lastname DESC;	
+
+6. For people who ordered more than one item, what was the total cost of the items they ordered and 
+how many items did they order? 
+
+SELECT	 lastname, SUM(cost) AS totalcost, COUNT(quantity) AS totalitems
+FROM	 customers c, orders o, items i
+WHERE	 c.customerid = o.customerid
+	 AND o.itemid = i.itemid
+GROUP BY o.customerid
+HAVING	 COUNT(quantity) > 1
+ORDER BY o.customerid;
+
+7. Write a query of your own that involves a sub-select and two tables. You need to say what question 
+the query is answering, ie like the questions above, you need to submit the query and the query results.
+
+For each order costing over £50 list the customer details and how much the order was
+
+
+SELECT	firstname, lastname , sum(linecost) as totalpurchased
+FROM	customers c, orders o 
+WHERE	c.customerid = o.customerid
+AND	itemid  in
+	(SELECT itemid
+	FROM orders
+	WHERE linecost > 50 )
+GROUP BY lastname
+ORDER BY lastname
+;
