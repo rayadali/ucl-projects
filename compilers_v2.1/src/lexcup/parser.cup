@@ -1,0 +1,209 @@
+import java_cup.runtime.*;
+import ast.*;
+
+
+terminal CHAR,TUPLE,REPEAT,UNTIL,CONCAT,TUOP,TUCL,LEN,IN,NOTIN,SEMI, LSQUARE, RSQUARE, INT, FLOAT, BOOL, FDEF,TDEF,STR,LIST,VOID, LPAREN, RPAREN, COMMA,LBRACE, RBRACE, DO, WHILE, IF, ELSE, ASSIGN, COLON,EXP, ADD, TIMES, OR, AND, LE, GE, LEQ,GEQ,EQ, NEQ, TRUE,FALSE, RETURN, MINUS, DIVIDE, DOT, NOT;
+
+terminal Integer INTNUM;
+terminal Float FLOATNUM;
+terminal String ID, CHRVALUE, STRVALUE;
+
+non terminal Node  typedeclist, vardec, typedec, mainprogram, returnstmt, stmtlist, stmt, body, actualparam, var,  exprlist;
+non terminal GNode program, declist, formalparam,paramlist,vardeclist, functionbody,  block;
+non terminal FuncDecNode funcdec;
+non terminal ParamNode param;
+non terminal TypeDeclNode basictypedecl, listtypedecl, strtypedecl, newdatatypedecl, tupletypedecl;
+non terminal DeclNode decl;
+non terminal String basictype, nametype, outtype;
+non terminal Node expr;
+
+
+precedence left OR;
+precedence left AND;
+precedence left CONCAT;
+precedence nonassoc EQ, NEQ, LE, GE, LEQ, GEQ, IN, NOTIN;
+precedence left ADD, MINUS;
+precedence left TIMES, DIVIDE;
+precedence right EXP;
+precedence left NOT;
+
+
+program ::= declist:d mainprogram:m             {: RESULT = new GNode(d,m); :}
+	;
+
+declist ::= declist:d typedec:t                 {: RESULT = new GNode(d,t); :}
+	| declist:d funcdec:f                   {: RESULT = new GNode(d,f); :}
+	| declist:d vardec:v                    {: RESULT = new GNode(d,v); :}
+	|                                       {: RESULT = null; :}
+	;
+
+typedec ::= TDEF ID COLON decl typedeclist SEMI
+	;
+
+typedeclist ::= COMMA decl typedeclist
+	|                                       {: RESULT = null; :}
+	;
+
+decl ::= ID:d COLON nametype:n             {: RESULT = new DeclNode(d,n); :} ////////
+	;
+
+nametype ::= basictype
+        | STR           {: RESULT = new String("str"); :}
+        | LIST          {: RESULT = new String("list"); :}
+        | ID:id         {: RESULT = new String (id); :}
+        | TUPLE         {: RESULT = new String("tuple"); :}
+	;
+
+
+funcdec ::= FDEF ID:id LPAREN formalparam:f RPAREN COLON outtype:o functionbody:b
+        {: RESULT = new FuncDecNode(id,f,o,b); :}
+	;
+
+outtype ::= basictype 
+        | STR           {: RESULT = new String("str"); :}
+        | LIST          {: RESULT = new String("list"); :}
+        | ID:id         {: RESULT = id; :}
+        | VOID          {: RESULT = new String("void"); :}
+        | TUPLE         {: RESULT = new String("tuple"); :}
+	;
+
+
+formalparam ::= param:p  paramlist:l            {: RESULT = new GNode(p,l); :}
+	|                                       {: RESULT = null; :}
+	;
+
+param ::= ID:id COLON nametype:t                {: RESULT = new ParamNode(id,t); :}
+	;
+
+
+paramlist ::= COMMA param:p paramlist:l         {: RESULT = new GNode(p,l); :}
+	|                                       {: RESULT = null; :}
+	;
+
+
+functionbody ::= LBRACE block:b returnstmt:r RBRACE     {: RESULT = new GNode(b,r); :}
+	;
+
+returnstmt ::= RETURN expr SEMI
+	| RETURN SEMI
+	|                                       {: RESULT = null; :}
+	;
+
+block ::= vardeclist:b stmtlist:r       {: RESULT = new GNode(b,r); :}
+	;
+
+
+
+vardec ::= basictypedecl:d      {: RESULT = new GNode(d,null); :}
+        | listtypedecl:d        {: RESULT = new GNode(d,null); :}
+        | tupletypedecl:d       {: RESULT = new GNode(d,null); :}
+        | strtypedecl:d         {: RESULT = new GNode(d,null); :}
+        | newdatatypedecl:d     {: RESULT = new GNode(d,null); :}
+	;
+
+vardeclist ::= vardeclist:b basictypedecl:r {: RESULT = new GNode(b,r); :}
+	| vardeclist:b listtypedecl:r       {: RESULT = new GNode(b,r); :}
+	| vardeclist:b strtypedecl:r        {: RESULT = new GNode(b,r); :}
+	| vardeclist:b tupletypedecl:r      {: RESULT = new GNode(b,r); :}
+	| vardeclist:b newdatatypedecl:r    {: RESULT = new GNode(b,r); :}
+	|                                   {: RESULT = null; :}
+	;
+
+basictypedecl ::= ID:n COLON basictype:t SEMI        {: RESULT = new TypeDeclNode(n,t,null); :}
+	| ID:n COLON basictype:t ASSIGN expr:e SEMI  {: RESULT = new TypeDeclNode(n, t, e); :}
+	;
+
+basictype ::= INT       {: RESULT = new String("int"); :}
+            | FLOAT     {: RESULT = new String("float"); :}
+            | BOOL      {: RESULT = new String("bool"); :}
+            | CHAR      {: RESULT = new String("char"); :}
+            ;
+
+strtypedecl ::= ID:n COLON STR SEMI             {: RESULT = new TypeDeclNode(n,"str", null); :}
+	| ID:n COLON STR ASSIGN expr:e SEMI
+	;
+
+listtypedecl ::= ID:n COLON LIST SEMI         {: RESULT = new TypeDeclNode(n,"str", null); :}
+	| ID:n COLON LIST ASSIGN expr:e SEMI  {: RESULT = new TypeDeclNode(n,"str", e); :}
+	;
+
+tupletypedecl ::= ID:n COLON TUPLE SEMI           {: RESULT = new TypeDeclNode(n,"str", null); :}
+	| ID:n COLON TUPLE ASSIGN expr:e SEMI       {: RESULT = new TypeDeclNode(n,"str", e); :}
+	;
+
+newdatatypedecl ::= ID:n COLON ID:t SEMI            {: RESULT = new TypeDeclNode(n,t, null); :}
+	| ID:n COLON ID:t ASSIGN expr:e exprlist:l SEMI {: RESULT = new TypeDeclNode(n, t, new GNode(e,l)); :}
+	;
+
+
+
+stmtlist ::= stmt stmtlist
+	|                   {: RESULT = null; :}
+	;
+
+stmt ::= WHILE LPAREN expr RPAREN DO body
+	| REPEAT body UNTIL LPAREN expr RPAREN SEMI
+	| IF LPAREN expr RPAREN body ELSE body
+	| ID LPAREN actualparam RPAREN SEMI
+	| var  ASSIGN  expr SEMI
+	;
+
+body ::= LBRACE vardeclist stmtlist RBRACE
+	| stmt
+	;
+
+actualparam ::= expr exprlist
+	|                       {: RESULT = null; :}
+	;
+
+var ::= ID
+	| ID LSQUARE expr RSQUARE
+	| var DOT ID
+	| var DOT ID LSQUARE expr RSQUARE
+	;
+
+
+expr ::= expr:e1 ADD expr:e2        //{: RESULT = new AddNode(e1,e2); :}
+	| expr:e1 TIMES expr:e2     //{: RESULT = new TimesNode(e1,e2); :}
+	| expr:e1 MINUS expr:e2     //{: RESULT = new MinusNode(e1,e2); :}
+	| expr:e1 DIVIDE expr:e2    //{: RESULT = new DivideNode(e1,e2); :}
+	| expr:e1 EXP expr:e2       //{: RESULT = new ExpNode(e1,e2); :}
+	| expr:e1 OR expr:e2        //{: RESULT = new OrNode(e1,e2); :}
+	| expr:e1 AND expr:e2       //{: RESULT = new AndNode(e1,e2); :}
+	| NOT expr:e                //{: RESULT = new NotNode(e); :}
+	| expr:e1 EQ expr:e2        //{: RESULT = new EqNode(e1,e2); :}
+	| expr:e1 NEQ expr:e2       //{: RESULT = new NeqNode(e1,e2); :}
+	| expr:e1 IN expr:e2        //{: RESULT = new InNode(e1,e2); :}
+	| expr:e1 NOTIN expr:e2     //{: RESULT = new NotInNode(e1,e2); :}
+	| expr:e1 LE expr:e2        //{: RESULT = new LeNode(e1,e2); :}
+	| expr:e1 GE expr:e2        //{: RESULT = new GeNode(e1,e2); :}
+	| expr:e1 LEQ expr:e2       //{: RESULT = new LeqNode(e1,e2); :}
+	| expr:e1 GEQ expr:e2       //{: RESULT = new GeqNode(e1,e2); :}
+	| expr:e1 CONCAT expr:e2    //{: RESULT = new ConcatNode(e1,e2); :}
+	| LPAREN expr RPAREN      
+	| LEN LPAREN ID:s RPAREN    //{: RESULT = new IdNode(s); :}
+	| LEN LPAREN LSQUARE expr exprlist RSQUARE RPAREN
+	| LEN LPAREN LSQUARE RSQUARE RPAREN
+	| LEN LPAREN STRVALUE:s RPAREN  //{: RESULT = new StrValueNode(s); :}
+	| var
+	| TRUE                          //{: RESULT = new String("true"); :}
+	| FALSE                         //{: RESULT = new String("false"); :}
+	| INTNUM:i                      //{: RESULT = new IntNumNode(i); :}
+	| FLOATNUM:f                    //{: RESULT = new FloatNumNode(f); :}
+	| CHRVALUE:c                    //{: RESULT = new ChrValueNode(c); :}
+	| STRVALUE:s                    //{: RESULT = new StrValueNode(s); :}
+	| ID LPAREN actualparam RPAREN
+	| LSQUARE expr exprlist RSQUARE
+	| LSQUARE RSQUARE
+	| TUOP expr exprlist TUCL
+	| TUOP TUCL
+	;
+
+exprlist ::= COMMA expr exprlist
+	|                           {: RESULT = null; :}
+	;
+
+
+
+mainprogram ::= LBRACE block RBRACE {: RESULT = null; :}
+	;

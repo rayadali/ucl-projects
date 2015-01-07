@@ -1,0 +1,197 @@
+import java_cup.runtime.*;
+
+
+terminal CHAR,TUPLE,REPEAT,UNTIL,CONCAT,TUOP,TUCL,LEN,IN,NOTIN,SEMI, LSQUARE, RSQUARE, INT, FLOAT, BOOL, FDEF,TDEF,STR,LIST,VOID, LPAREN, RPAREN, COMMA,LBRACE, RBRACE, DO, WHILE, IF, ELSE, ASSIGN, COLON,EXP, ADD, TIMES, OR, AND, LE, GE, LEQ,GEQ,EQ, NEQ, TRUE,FALSE, RETURN, MINUS, DIVIDE, DOT, NOT;
+
+terminal Integer INTNUM;
+terminal Float FLOATNUM;
+terminal String ID, CHRVALUE, STRVALUE;
+
+non terminal program, vardec, declist, typedeclist, tupletypedecl , funcdec, typedec, mainprogram, decl, nametype,  basictypedecl, listtypedecl, strtypedecl, newdatatypedecl, basictype, outtype,  formalparam, functionbody, param, paramlist, block, returnstmt, stmtlist, stmt, body, actualparam, var, vardeclist, exprlist;
+non terminal ExpressionNode expr;
+
+precedence left OR;
+precedence left AND;
+precedence left CONCAT;
+precedence nonassoc EQ, NEQ, LE, GE, LEQ, GEQ, IN, NOTIN;
+precedence left ADD, MINUS;
+precedence left TIMES, DIVIDE;
+precedence right EXP;
+precedence left NOT;
+
+
+program ::= declist mainprogram  {: System.out.println("main parsed"); :}
+	;
+
+declist ::= declist typedec
+	| declist funcdec
+	| declist vardec
+	|
+	;
+
+typedec ::= TDEF ID COLON decl typedeclist SEMI
+	;
+
+typedeclist ::= COMMA decl typedeclist
+	|
+	;
+
+decl ::= ID COLON nametype
+	;
+
+nametype ::= basictype 
+        | STR
+        | LIST
+        | ID
+        | TUPLE
+	;
+
+
+funcdec ::= FDEF ID LPAREN formalparam RPAREN COLON outtype functionbody
+	;
+
+outtype ::= basictype
+        | STR
+        | LIST
+        | ID
+        | VOID
+        | TUPLE
+	;
+
+
+formalparam ::= param  paramlist
+	|
+	;
+
+param ::= ID COLON nametype
+	;
+
+
+paramlist ::= COMMA param paramlist
+	|
+	;
+
+
+functionbody ::= LBRACE block returnstmt RBRACE
+	;
+
+returnstmt ::= RETURN expr SEMI
+	| RETURN SEMI
+	|
+	;
+
+block ::= vardeclist stmtlist
+	;
+
+
+
+vardec ::= basictypedecl 
+        | listtypedecl
+        | tupletypedecl
+        | strtypedecl
+        | newdatatypedecl
+	;
+
+vardeclist ::= vardeclist basictypedecl
+	| vardeclist listtypedecl
+	| vardeclist strtypedecl
+	| vardeclist tupletypedecl
+	| vardeclist newdatatypedecl
+	|
+	;
+
+basictypedecl ::= ID COLON basictype SEMI
+	| ID COLON basictype ASSIGN expr SEMI
+	;
+
+basictype ::= INT | FLOAT | BOOL | CHAR
+	;
+
+strtypedecl ::= ID COLON STR SEMI
+	| ID COLON STR ASSIGN expr SEMI
+	;
+
+listtypedecl ::= ID COLON LIST SEMI
+	| ID COLON LIST ASSIGN expr SEMI
+	;
+
+tupletypedecl ::= ID COLON TUPLE SEMI
+	| ID COLON TUPLE ASSIGN expr SEMI
+	;
+
+newdatatypedecl ::= ID COLON ID SEMI
+	| ID COLON ID ASSIGN expr exprlist SEMI
+	;
+
+
+
+stmtlist ::= stmt stmtlist
+	|
+	;
+
+stmt ::= WHILE LPAREN expr RPAREN DO body
+	| REPEAT body UNTIL LPAREN expr RPAREN SEMI
+	| IF LPAREN expr RPAREN body ELSE body
+	| ID LPAREN actualparam RPAREN SEMI
+	| var  ASSIGN  expr SEMI
+	;
+
+body ::= LBRACE vardeclist stmtlist RBRACE
+	| stmt
+	;
+
+actualparam ::= expr exprlist
+	|
+	;
+
+var ::= ID
+	| ID LSQUARE expr RSQUARE
+	| var DOT ID
+	| var DOT ID LSQUARE expr RSQUARE
+	;
+
+
+expr ::= expr:e1 ADD expr:e2        
+	| expr:e1 TIMES expr:e2
+	| expr:e1 MINUS expr:e2
+	| expr:e1 DIVIDE expr:e2
+	| expr:e1 EXP expr:e2
+	| expr:e1 OR expr:e2
+	| expr:e1 AND expr:e2
+	| NOT expr:e
+	| expr:e1 EQ expr:e2
+	| expr:e1 NEQ expr:e2
+	| expr:e1 IN expr:e2
+	| expr:e1 NOTIN expr:e2
+	| expr:e1 LE expr:e2
+	| expr:e1 GE expr:e2
+	| expr:e1 LEQ expr:e2
+	| expr:e1 GEQ expr:e2
+	| expr:e1 CONCAT expr:e2
+	| LPAREN expr RPAREN
+	| LEN LPAREN ID:s RPAREN
+	| LEN LPAREN LSQUARE expr exprlist RSQUARE RPAREN
+	| LEN LPAREN LSQUARE RSQUARE RPAREN
+	| LEN LPAREN STRVALUE:s RPAREN
+	| var
+	| TRUE
+	| FALSE
+	| INTNUM:i
+	| FLOATNUM:f
+	| CHRVALUE:c
+	| STRVALUE:s
+	| ID LPAREN actualparam RPAREN
+	| LSQUARE expr exprlist RSQUARE
+	| LSQUARE RSQUARE
+	| TUOP expr exprlist TUCL
+	| TUOP TUCL
+	;
+
+exprlist ::= COMMA expr exprlist
+	|
+	;
+
+
+
+mainprogram ::= LBRACE block RBRACE
+	;

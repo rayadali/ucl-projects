@@ -1,0 +1,35 @@
+expr ::= expr:e1 ADD expr:e2        {: RESULT = new AddNode(e1,e2); :}
+	| expr:e1 TIMES expr:e2     {: RESULT = new TimesNode(e1,e2); :}
+	| expr:e1 MINUS expr:e2     {: RESULT = new MinusNode(e1,e2); :}
+	| expr:e1 DIVIDE expr:e2    {: RESULT = new DivideNode(e1,e2); :}
+	| expr:e1 EXP expr:e2       {: RESULT = new ExpNode(e1,e2); :}
+	| expr:e1 OR expr:e2        {: RESULT = new OrNode(e1,e2); :}
+	| expr:e1 AND expr:e2       {: RESULT = new AndNode(e1,e2); :}
+	| NOT expr:e                {: RESULT = new NotNode(e); :}
+	| expr:e1 EQ expr:e2        {: RESULT = new EqNode(e1,e2); :}
+	| expr:e1 NEQ expr:e2       {: RESULT = new NeqNode(e1,e2); :}
+	| expr:e1 IN expr:e2        {: RESULT = new InNode(e1,e2); :}
+	| expr:e1 NOTIN expr:e2     {: RESULT = new NotInNode(e1,e2); :}
+	| expr:e1 LE expr:e2        {: RESULT = new LeNode(e1,e2); :}
+	| expr:e1 GE expr:e2        {: RESULT = new GeNode(e1,e2); :}
+	| expr:e1 LEQ expr:e2       {: RESULT = new LeqNode(e1,e2); :}
+	| expr:e1 GEQ expr:e2       {: RESULT = new GeqNode(e1,e2); :}
+	| expr:e1 CONCAT expr:e2    {: RESULT = new ConcatNode(e1,e2); :}
+	| LPAREN expr RPAREN      
+	| LEN LPAREN ID:s RPAREN    {: RESULT = new IdNode(s); :}
+	| LEN LPAREN LSQUARE expr exprlist RSQUARE RPAREN
+	| LEN LPAREN LSQUARE RSQUARE RPAREN
+	| LEN LPAREN STRVALUE:s RPAREN  {: RESULT = new StrValueNode(s); :}
+	| var
+	| TRUE                          {: RESULT = new String("true"); :}
+	| FALSE                         {: RESULT = new String("false"); :}
+	| INTNUM:i                      {: RESULT = new IntNumNode(i); :}
+	| FLOATNUM:f                    {: RESULT = new FloatNumNode(f); :}
+	| CHRVALUE:c                    {: RESULT = new ChrValueNode(c); :}
+	| STRVALUE:s                    {: RESULT = new StrValueNode(s); :}
+	| ID LPAREN actualparam RPAREN
+	| LSQUARE expr exprlist RSQUARE
+	| LSQUARE RSQUARE
+	| TUOP expr exprlist TUCL
+	| TUOP TUCL
+	;

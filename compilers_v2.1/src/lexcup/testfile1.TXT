@@ -1,0 +1,8 @@
+i : int ;
+j : bool;
+k : char;
+l : str;
+m : tuple;
+n : float;
+
+{}
